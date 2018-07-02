@@ -3,6 +3,7 @@ package com.briup.apps.poll.service;
 import java.util.List;
 
 import com.briup.apps.poll.bean.Grade;
+import com.briup.apps.poll.bean.extend.GradeVM;
 
 
 
@@ -11,6 +12,8 @@ public interface IGradeService {
 	 * 查询班级所有信息
 	 */
 	List<Grade> findAll() throws Exception;
+	
+	List<GradeVM> findAllGradeVM() throws Exception;
 	/*
 	 * 通过id查询
 	 */

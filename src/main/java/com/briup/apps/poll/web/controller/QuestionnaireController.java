@@ -1,7 +1,5 @@
 package com.briup.apps.poll.web.controller;
 
-
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,20 +10,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.briup.apps.poll.bean.Questionnaire;
+import com.briup.apps.poll.bean.extend.QuestionnaireVM;
 import com.briup.apps.poll.service.IQuestionnaireService;
 import com.briup.apps.poll.util.MsgResponse;
 
 import io.swagger.annotations.Api;
 
-@Api(description="问卷相关模块")
+@Api(description = "问卷相关模块")
 @RestController
 @RequestMapping("/questionnaire")
 public class QuestionnaireController {
 
 	@Autowired
 	private IQuestionnaireService questionnaireService;
+
 	@GetMapping("findAllQuestionnaire")
-	public MsgResponse findAllQuestionnaire(){
+	public MsgResponse findAllQuestionnaire() {
 		try {
 			List<Questionnaire> list = questionnaireService.findAll();
 			return MsgResponse.success("success", list);
@@ -33,8 +33,19 @@ public class QuestionnaireController {
 			return MsgResponse.error(e.getMessage());
 		}
 	}
+	
+	@GetMapping("findQuestionnaireVMById")
+	public MsgResponse findQuestionnaireVMById(long id) {
+		try {
+			QuestionnaireVM qnVM=questionnaireService.findQuestionnaireVMById(id);
+			return MsgResponse.success("success", qnVM);
+		} catch (Exception e) {
+			return MsgResponse.error(e.getMessage());
+		}
+	}
+
 	@GetMapping("findByIdQuestionnaire")
-	public MsgResponse findByIdQuestionnaire(long id){
+	public MsgResponse findByIdQuestionnaire(long id) {
 		try {
 			Questionnaire list = questionnaireService.findById(id);
 			return MsgResponse.success("success", list);
@@ -42,8 +53,9 @@ public class QuestionnaireController {
 			return MsgResponse.error(e.getMessage());
 		}
 	}
+
 	@GetMapping("queryQuestionnaire")
-	public MsgResponse queryQuestionnaire(String keywords){
+	public MsgResponse queryQuestionnaire(String keywords) {
 		try {
 			List<Questionnaire> list = questionnaireService.query(keywords);
 			return MsgResponse.success("success", list);
@@ -51,9 +63,9 @@ public class QuestionnaireController {
 			return MsgResponse.error(e.getMessage());
 		}
 	}
-	
+
 	@PostMapping("saveOrUpdadeQuestionnaire")
-	public MsgResponse saveOrUpdadeQuestionnaire(Questionnaire questionnaire){
+	public MsgResponse saveOrUpdadeQuestionnaire(Questionnaire questionnaire) {
 		try {
 			questionnaireService.saveOrUpdate(questionnaire);
 			return MsgResponse.success("success", null);
@@ -61,8 +73,19 @@ public class QuestionnaireController {
 			return MsgResponse.error(e.getMessage());
 		}
 	}
+	
+	@PostMapping("saveOrUpdadeQuestionnaireVM")
+	public MsgResponse saveOrUpdadeQuestionnaireVM(Questionnaire questionnaire,Long[] questionIds) {
+		try {
+			questionnaireService.saveOrUpdate(questionnaire,questionIds);
+			return MsgResponse.success("success", null);
+		} catch (Exception e) {
+			return MsgResponse.error(e.getMessage());
+		}
+	}
+
 	@PostMapping("deleteByIdQuestionnaire")
-	public MsgResponse deleteByIdQuestionnaire(@RequestParam long id){
+	public MsgResponse deleteByIdQuestionnaire(@RequestParam long id) {
 		try {
 			questionnaireService.deleteById(id);
 			return MsgResponse.success("success", null);
@@ -70,8 +93,9 @@ public class QuestionnaireController {
 			return MsgResponse.error(e.getMessage());
 		}
 	}
+
 	@PostMapping("batchDeleteQuestionnaire")
-	public MsgResponse batchDeleteQuestionnaire(@RequestParam List<Long>ids){
+	public MsgResponse batchDeleteQuestionnaire(@RequestParam List<Long> ids) {
 		try {
 			questionnaireService.batchDelete(ids);
 			return MsgResponse.success("success", null);

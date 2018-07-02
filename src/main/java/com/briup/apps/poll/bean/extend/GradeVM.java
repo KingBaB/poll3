@@ -1,15 +1,21 @@
 package com.briup.apps.poll.bean.extend;
+/**
+*          @author
+*          @version
+*          @describe
+*/
 
-public class CourseVM {
+import com.briup.apps.poll.bean.School;
 
-	private long id;
+public class GradeVM {
+	private Long id;
 	private String name;
 	private String description;
-	private Integer period;
-	public long getId() {
+	private School school;
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -24,11 +30,12 @@ public class CourseVM {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Integer getPeriod() {
-		return period;
+	public School getSchool() {
+		return school;
 	}
-	public void setPeriod(Integer period) {
-		this.period = period;
+	public void setSchool(School school) {
+		this.school = school;
 	}
 	
+
 }

@@ -5,11 +5,14 @@ import java.util.List;
 //import java.util.List;
 
 import com.briup.apps.poll.bean.Clazz;
+import com.briup.apps.poll.bean.extend.ClazzVM;
 
 public interface IClazzService {
 	/*
 	 * 查询所有*/
 	List<Clazz> findAll() throws Exception;
+	
+	List<ClazzVM> selectAll() throws Exception;
 	
 	/*
 	 *通过Id查询 */
@@ -32,6 +35,7 @@ public interface IClazzService {
 
 	void batchDeleteById(Long[] ids) throws Exception;
 
+	
 
 	
 	

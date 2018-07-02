@@ -1,11 +1,20 @@
 package com.briup.apps.poll.bean.extend;
 
-public class CourseVM {
+import java.util.List;
 
+import io.swagger.annotations.Api;
+
+/**
+ * @author
+ * @version
+ * @describe
+ */
+@Api(value="问卷模型，问卷中包含多个问题,如果问题是单选和多选，该问题应该包含选项信息")
+public class QuestionnaireVM {
 	private long id;
 	private String name;
 	private String description;
-	private Integer period;
+	private List<QuestionVM> questionVMs;
 	public long getId() {
 		return id;
 	}
@@ -24,11 +33,12 @@ public class CourseVM {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Integer getPeriod() {
-		return period;
+	public List<QuestionVM> getQuestionVMs() {
+		return questionVMs;
 	}
-	public void setPeriod(Integer period) {
-		this.period = period;
+	public void setQuestionVMs(List<QuestionVM> questionVMs) {
+		this.questionVMs = questionVMs;
 	}
+	
 	
 }

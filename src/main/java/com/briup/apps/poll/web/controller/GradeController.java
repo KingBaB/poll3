@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.briup.apps.poll.bean.Grade;
+import com.briup.apps.poll.bean.extend.GradeVM;
 import com.briup.apps.poll.service.IGradeService;
 import com.briup.apps.poll.util.MsgResponse;
 
@@ -35,6 +36,23 @@ public MsgResponse findAllGrade(){
 		return MsgResponse.error(e.getMessage());
 	}
 }
+@GetMapping("findAllGradeVM")
+/*
+ * 查询所有班级学生信息
+ */
+public MsgResponse findAllGradeVM(){
+	try {
+		List<GradeVM> list = gradeService.findAllGradeVM();
+		//返回成功信息
+		return MsgResponse.success("success", list);
+	} catch (Exception e) {
+		//返回错误信息
+		e.printStackTrace();
+		return MsgResponse.error(e.getMessage());
+	}
+}
+
+
 @GetMapping("findByIdGrade")
 /*
  * 通过ID查找班级信息
