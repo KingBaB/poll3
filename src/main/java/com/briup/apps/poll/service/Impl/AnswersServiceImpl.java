@@ -47,8 +47,13 @@ public class AnswersServiceImpl implements IAnswersService{
 
 	@Override
 	public void saveOrUpdate(answers answers) throws Exception {
-		answers answers2=answersMapper.selectByPrimaryKey(answers.getId());
-		if(answers2!=null){
+//		answers answers2=answersMapper.selectByPrimaryKey(answers.getId());
+//		if(answers2!=null){
+//			answersMapper.updateByPrimaryKey(answers);
+//		}else{
+//			answersMapper.insert(answers);
+//		}
+		if(answers.getId()!=null){
 			answersMapper.updateByPrimaryKey(answers);
 		}else{
 			answersMapper.insert(answers);
@@ -62,6 +67,10 @@ public class AnswersServiceImpl implements IAnswersService{
 		}
 	}
 
-	
-
+	@Override
+	public List<answers> findAnswersBySurveyId(Long id) throws Exception {
+		answersExample example=new answersExample();
+		example.createCriteria().andSurveyIdEqualTo(id);
+		return answersMapper.selectByExample(example);
+	}
 }

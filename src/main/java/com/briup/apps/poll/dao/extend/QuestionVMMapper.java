@@ -12,9 +12,13 @@ import com.briup.apps.poll.bean.extend.QuestionVM;
 public interface QuestionVMMapper {
 	List<QuestionVM> selectAll();
 	
-	List<QuestionVM> selectQuestionnaireById(long id);
+	//List<QuestionVM> selectQuestionnaireById(long id);
+	
+	QuestionVM selectQuestionVMById(long id);
 	
 	void savaOrUpdateQuestionVM(QuestionVM questionVM);
+	
+	
 	
 	
 

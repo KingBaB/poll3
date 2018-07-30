@@ -14,6 +14,8 @@ public interface IAnswersService {
 	
 	answers findById(Long id) throws Exception;
 	
+	List<answers> findAnswersBySurveyId(Long id) throws Exception;
+	
 	List<answers> query(String keywords) throws Exception;
 	
 	void deleteById(Long id) throws Exception;

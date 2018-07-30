@@ -24,3 +24,8 @@
 /nbdist/
 /.nb-gradle/
 /src/
+/.gitignore
+/.mvn/
+/mvnw
+/mvnw.cmd
+/pom.xml

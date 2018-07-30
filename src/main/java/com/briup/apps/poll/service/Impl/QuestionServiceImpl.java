@@ -131,6 +131,13 @@ public class QuestionServiceImpl implements IQuestionService {
 
 	}
 
+	@Override
+	public QuestionVM selectQuestionVMById(long id) throws Exception {
+		return questionVMMapper.selectQuestionVMById(id);
+	}
+
+	
+
 	/*
 	 * @Override(non-Javadoc)
 	 * 

@@ -65,7 +65,7 @@ import io.swagger.annotations.ApiOperation;
 		
 	@ApiOperation(value="通过id查询信息")
 	@GetMapping("findQuestionById")	
-	public MsgResponse findById(long id){
+	public MsgResponse findQuestionById(long id){
 		try{
 			//List<Question list = questionService.findById();
 		Question list=	questionService.findById(id);
@@ -75,6 +75,20 @@ import io.swagger.annotations.ApiOperation;
 		return MsgResponse.error(e.getMessage());
 	}
 	}
+	
+	@ApiOperation(value="通过id级联查询信息")
+	@GetMapping("findQuestionVMById")	
+	public MsgResponse findQuestionVMById(long id){
+		try{
+			//List<Question list = questionService.findById();
+		QuestionVM list=	questionService.selectQuestionVMById(id);
+			return MsgResponse.success("success",list);
+	} catch (Exception e) {
+		e.printStackTrace();
+		return MsgResponse.error(e.getMessage());
+	}
+	}
+	
 	@ApiOperation(value="通过问题查询信息")
 	@GetMapping("queryQuestion")
 	public MsgResponse query(String keywords){

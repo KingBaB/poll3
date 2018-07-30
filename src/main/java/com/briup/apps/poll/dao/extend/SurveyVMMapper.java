@@ -12,6 +12,8 @@ import com.briup.apps.poll.bean.extend.SurveyVM;
 public interface SurveyVMMapper {
 	List<SurveyVM> selectAll();
 	
-	SurveyVM selectSurveyVMById();
+	SurveyVM selectSurveyVMById(Long id);
+	
+	List<SurveyVM> selectByClazzIdAndCheckPass(long id);
 
 }

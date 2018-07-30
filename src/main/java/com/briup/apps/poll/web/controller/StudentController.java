@@ -22,7 +22,7 @@ import com.briup.apps.poll.util.MsgResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-@Api(description="学生权限接口")
+@Api(description="学生相当接口")
 @RestController
 @RequestMapping("/student")
 public class StudentController {
@@ -30,6 +30,7 @@ public class StudentController {
 	private ISurveyService surveyService;
 	@Autowired
 	private IAnswersService answersService;
+
 	@ApiOperation("登录课调")
 	@GetMapping("loginSurvey")
 	public MsgResponse loginSurvey(long id){

@@ -16,8 +16,10 @@ public interface ISurveyService {
 	// 根据ID查询
 	Survey findById(long id) throws Exception;
 
+	List<SurveyVM> selectByClazzIdAndCheckPass(long id) throws Exception;
+	
 	// 通过Id级联查询课调信息
-	SurveyVM findSurveyVMById(long id) throws Exception;
+	SurveyVM findSurveyVMById(Long id) throws Exception;
 
 	// 根据关键字查询
 	List<Survey> query(String keywords) throws Exception;

@@ -12,6 +12,8 @@ public interface IQuestionService {
 	List<QuestionVM> selectAll() throws Exception;
 
 	Question findById(long id) throws Exception;
+	
+	QuestionVM selectQuestionVMById(long id) throws Exception;
 
 	List<Question> query(String keywords) throws Exception;
 

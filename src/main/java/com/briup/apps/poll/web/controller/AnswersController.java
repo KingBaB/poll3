@@ -53,6 +53,41 @@ public class AnswersController {
 
 	}
 	
+	@ApiOperation(value="删除答卷主观题",
+			notes="单选题答案和多选题答案不收影响")
+	@GetMapping("deleteAnswerContent")
+	public MsgResponse deleteAnswerContent(long id){
+		try {
+			// 通过id找到答卷
+			answers answer = answersService.findById(id);
+			// 设置答卷内容更为空
+			answer.setContent("");
+			answersService.saveOrUpdate(answer);
+			return MsgResponse.success("删除成功", null);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return MsgResponse.error(e.getMessage());
+		}
+	}
+	
+	@ApiOperation(value="修改答卷主观题",
+			notes="")
+	@GetMapping("updateAnswerContent")
+	public MsgResponse updateAnswerContent(long id,String content){
+		try {
+			// 通过id找到答卷
+			answers answer = answersService.findById(id);
+			// 设置答卷内容为content
+			answer.setContent(content);
+			answersService.saveOrUpdate(answer);
+			return MsgResponse.success("修改成功", null);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return MsgResponse.error(e.getMessage());
+		}
+
+	}
+	
 	@GetMapping("findAnswersById")
 	@ApiOperation(value="通过Id查找课调结果")
 	public MsgResponse findAnswersById(@RequestParam long id){
